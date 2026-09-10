@@ -43,29 +43,41 @@ let moles = [
 
 
 
-//randomgen//
+
+
+
+
 let activeMoles = {}
-let randoMole = Math.floor(Math.random() * moles.length) // number of moles 
-let selectedMole = moles[randoMole]
-let randomHole = Math.floor(Math.random() * holes.length) // 16 is thenumber of holes// 
-while (activeMoles[randomHole]) {
-    randomHole = Math.floor(Math.random() * holes.length)
+
+
+function spawnMole (){
+    if (Object.keys(activeMoles).length < maxmoles){
+        //randomgen//
+        let randoMole = Math.floor(Math.random() * moles.length) // number of moles 
+        let selectedMole = moles[randoMole]
+        let randomHole = Math.floor(Math.random() * holes.length) // 16 is thenumber of holes// 
+        while (activeMoles[randomHole]) {
+            randomHole = Math.floor(Math.random() * holes.length)
+        }
+        let selectedHole =  holes[randomHole]
+        
+        let moleImage = selectedHole.querySelector(".mole")
+        console.log(moleImage)
+        moleImage.style.backgroundImage = `url("${selectedMole.image}")`
+        
+        moleImage.classList.add("show")
+        let activeMole = {
+        image: selectedMole.image,
+        type: selectedMole.type,
+        hits: 0,
+        maxhits: selectedMole.maxhits,
+        damage: selectedMole.damage
+        }
+
+        activeMoles[randomHole] = activeMole
+    }
 }
-let selectedHole =  holes[randomHole]
-let moleImage = document.createElement("img")
-moleImage.src = selectedMole.image
-selectedHole.appendChild(moleImage)
 
-
-
-
-
-let activeMole = {
-    image: selectedMole.image,
-    type: selectedMole.type,
-    hits: 0,
-    maxhits: selectedMole.maxhits,
-    damage: selectedMole.damage
-}
-
-activeMoles[randomHole] = activeMole
+spawnMole()
+spawnMole()
+spawnMole()
