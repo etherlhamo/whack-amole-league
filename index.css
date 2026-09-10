@@ -1,0 +1,83 @@
+body{
+    height:auto;
+    width: auto;
+    text-align: center;
+    margin: 0px;
+    background-image:url(images/js.webp) ;
+    background-size: cover;
+}
+.main {
+display:flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+width: auto;
+flex-direction: column;
+}
+.hole {
+    width: 100%;
+    height: 100%;
+    background-image: url("images/mole-hole.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+.mole{
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width :100%;
+    height: 100%;
+    background-image: url(images/Pantheon_Render.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ;
+    transform: translateY(100%);
+    transition: .5s ease-out;
+    border-radius: 50%;
+}
+.hole:hover .mole{
+    transform: translateY(0);
+}
+.the-grid {
+
+    display: grid;
+    height: 40vh;
+    width: 40vw;
+    grid-template-columns:1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+h1 {
+background-color: red;
+border: 2px solid red;
+border-radius: 16px;
+height: 3vh;
+width: 30vw;
+}
+h3 {
+    display: flex;
+    height: 3vh;
+    width: 30vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px 0 20px 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+background-color: red;
+border: 2px solid red;
+}
+button{
+    padding: 10;
+    height: 5vh;
+    width: 30dvw;
+    font-size: 30px;
+    background-color: goldenrod;
+    border-radius: 15px 15px;
+    
+}
