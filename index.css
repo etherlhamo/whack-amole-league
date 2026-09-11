@@ -40,8 +40,15 @@ flex-direction: column;
     transition: .5s ease-out;
 }
 
+.the-grid {
 
-
+    display: grid;
+    height: 40vh;
+    width: 40vw;
+    grid-template-columns:1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
 h1 {
 background-color: red;
 border: 2px solid red;
