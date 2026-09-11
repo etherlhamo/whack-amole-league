@@ -23,7 +23,7 @@ startbutton.addEventListener("click", () => {
 
         spawntimer = setInterval(() => {
             spawnMole()
-        }, 800)
+        }, 600)
     }
 })
 
@@ -42,8 +42,8 @@ let moles = [
         image: "images/Rengar_Render.webp",
         type: "tough",
         hits: 0,
-        maxhits: 3,
-        damage: 3
+        maxhits: 2,
+        damage: 2
     },
 
     {
@@ -52,7 +52,7 @@ let moles = [
         hits: 0,
         maxhits: 1,
         damage: 1,
-        timebonus: 4
+        timebonus: 3
     },
 
     {
@@ -102,13 +102,11 @@ function spawnMole() {
             activeMole.timer = setTimeout(() => {
 
                 if (activeMoles[randomHole] === activeMole) {
-
-                    combo = 0
-                    comboLabel.textContent = combo
-                    updatecombomodifier()
-
-                    moleImage.classList.remove("show")
-                    delete activeMoles[randomHole]
+                        combo = 0
+                        comboLabel.textContent = combo
+                        updatecombomodifier()
+                        moleImage.classList.remove("show")
+                        delete activeMoles[randomHole]
                 }
             }, 1200)
 
@@ -118,15 +116,15 @@ function spawnMole() {
             setTimeout(() => {
 
                 if (activeMoles[randomHole] === activeMole) {
-
-                    combo = 0
-                    comboLabel.textContent = combo
-                    updatecombomodifier()
+                    if (activeMole.type !== "trap"){
+                        combo = 0
+                        comboLabel.textContent = combo
+                        updatecombomodifier()
+                    }
 
                     moleImage.classList.remove("show")
                     delete activeMoles[randomHole]
                 }
-
             }, 2200)
         }
     }
