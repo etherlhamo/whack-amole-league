@@ -82,3 +82,11 @@ button{
 .mole.show {
     transform: translateY(0);
 }
+.finally{
+    padding: 10;
+    height: 3vh;
+    width: 20vw;
+    font-size: 20px;
+    background-color:  goldenrod;
+    border-radius: 15px 15px;
+}
