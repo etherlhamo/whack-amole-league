@@ -1,3 +1,4 @@
+
 let isGameRunning = false;
 let lives = 10
 let score = 0
@@ -52,7 +53,7 @@ const livesLabel = document.querySelector("#lives-tracker")
 const timeLabel = document.querySelector("#time-tracker")
 // load high score
 highscore = Number(localStorage.getItem("highscore")) || 0
-highscoreLabel.textContent = highscore
+highscoreLabel.textContent = "highscore " + highscore
 // start button
 startbutton.addEventListener("click", () => {
     if (!isGameRunning) {
@@ -60,7 +61,7 @@ startbutton.addEventListener("click", () => {
         spawnMole()
         spawntimer = setInterval(() => {
             spawnMole()
-        }, 600)
+        }, 500)
     }
 })
 //  reset function
@@ -73,18 +74,18 @@ function resetgame() {
     lives = 10
     score = 0
     combo = 0
+    timeleft = 30
     livesLabel.textContent = "Lives: " + lives
     timeLabel.textContent = "Time: " + timeleft
     combomodifier = 1
-    timeleft = 30
     activeMoles = {}
     // remove all visible moles
     holes.forEach(hole => {
         hole.querySelector(".mole").classList.remove("show")
     })
     // update UI
-    scoreLabel.textContent = score
-    comboLabel.textContent = combo
+    scoreLabel.textContent = "score:" + score
+    comboLabel.textContent = "combo:" + combo
     console.log("GAME OVER")
 }
 // creating new mole objects from the template
@@ -117,7 +118,6 @@ function spawnMole() {
             activeMole.timer = setTimeout(() => {
                 if (activeMoles[randomHole] === activeMole) {
                     // fast mole escaped → damage
-                    lives -= activeMole.damage
                     livesLabel.textContent= "lives: "+ lives
                     // escaped mole resets combo
                     combo = 0
@@ -174,7 +174,7 @@ holes.forEach((hole, index) => {
                     hitsound.play()
                     console.log("mole was defeated")
                     combo += 1
-                    comboLabel.textContent = combo
+                    comboLabel.textContent = "combo " + combo
                     hole.querySelector(".mole").classList.remove("show")
                     delete activeMoles[index]
                     updatecombomodifier()
@@ -189,7 +189,7 @@ holes.forEach((hole, index) => {
                     console.log("tough mole defeated")
                     hole.querySelector(".mole").classList.remove("show")
                     combo += 1
-                    comboLabel.textContent = combo
+                    comboLabel.textContent = "combo " + combo
                     delete activeMoles[index]
                     updatecombomodifier()
                     addscore(1)
@@ -203,7 +203,7 @@ holes.forEach((hole, index) => {
                 hitsound.currentTime =0
                 hitsound.play()
                 combo = 0
-                comboLabel.textContent = combo
+                comboLabel.textContent = "combo "+ combo
                 console.log("you lost a life")
                 console.log("Lives:", lives)
                 hole.querySelector(".mole").classList.remove("show")
@@ -223,7 +223,7 @@ holes.forEach((hole, index) => {
                 hitsound.play()
                 clearTimeout(mole.timer)
                 combo += 1
-                comboLabel.textContent = combo
+                comboLabel.textContent = "combo " + combo
                 hole.querySelector(".mole").classList.remove("show")
                 delete activeMoles[index]
                 updatecombomodifier()
@@ -263,13 +263,13 @@ function updatecombomodifier() {
 // score
 function addscore(points) {
     score += points * combomodifier
-    scoreLabel.textContent = score
+    scoreLabel.textContent = "score "+score
 }
 // update high score
 function updatehighscore() {
     if (score > highscore) {
         highscore = score
-        localStorage.setItem("highscore", highscore)
-        highscoreLabel.textContent = highscore
+        localStorage.setItem("highscore", +highscore)
+        highscoreLabel.textContent ="highscore "+ highscore
     }
 }

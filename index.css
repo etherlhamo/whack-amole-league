@@ -90,3 +90,26 @@ button{
     background-color:  goldenrod;
     border-radius: 15px 15px;
 }
+.rules {
+    position: fixed;
+    left: 20px;
+    top: 30%;
+    transform: translateY(-50%);
+    text-align: left;
+    background-color: slateblue;
+    border: 1px solid navy;
+    padding: 10px 20px;
+    max-width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.rules p {
+    color: antiquewhite;
+    font-size: 3vh;
+    line-height: 1.5;
+    margin: 12px 0;
+}
+.rules h3 {
+    width: 100%;
+    box-sizing: border-box;
+}
