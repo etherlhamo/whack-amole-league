@@ -1,4 +1,5 @@
 
+let letree  = new Audio("sounds/tree.ogg")
 let isGameRunning = false;
 let lives = 10
 let score = 0
@@ -10,6 +11,7 @@ let hitsound = new Audio("sounds/panthsound.ogg")
 let spawntimer
 let timer
 let activeMoles = {}
+
 const maxmoles = 6
 // mole types
 let moles = [
@@ -172,6 +174,8 @@ holes.forEach((hole, index) => {
                 if (mole.hits >= mole.maxhits) {
                     hitsound.currentTime =0
                     hitsound.play()
+                    letree.currentTime =0
+                    letree.play()
                     console.log("mole was defeated")
                     combo += 1
                     comboLabel.textContent = "combo " + combo
@@ -187,6 +191,8 @@ holes.forEach((hole, index) => {
                     hitsound.currentTime =0
                     hitsound.play()
                     console.log("tough mole defeated")
+                    letree.currentTime =0
+                    letree.play()
                     hole.querySelector(".mole").classList.remove("show")
                     combo += 1
                     comboLabel.textContent = "combo " + combo
@@ -202,6 +208,8 @@ holes.forEach((hole, index) => {
                 livesLabel.textContent = "Lives: " + lives
                 hitsound.currentTime =0
                 hitsound.play()
+                letree.currentTime =0
+                letree.play()
                 combo = 0
                 comboLabel.textContent = "combo "+ combo
                 console.log("you lost a life")
@@ -221,6 +229,8 @@ holes.forEach((hole, index) => {
                 timeLabel.textContent = "time: " + timeleft
                 hitsound.currentTime =0
                 hitsound.play()
+                letree.currentTime =0
+                letree.play()
                 clearTimeout(mole.timer)
                 combo += 1
                 comboLabel.textContent = "combo " + combo
@@ -273,3 +283,4 @@ function updatehighscore() {
         highscoreLabel.textContent ="highscore "+ highscore
     }
 }
+// easter egg//
